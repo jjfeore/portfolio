@@ -105,6 +105,19 @@ h2 {
   margin-bottom: 20px;
 }
 
+.social-button {
+  width: 80%;
+  height: 10vw;
+  line-height: 10vw;
+  font-size: 6vw;
+  border-radius: 5px;
+  background-color: #666;
+  color: #FFF;
+  font-weight: bold;
+  margin: 10px auto 0px auto;
+
+}
+
 @media all and (min-width: 768px) {
   h2 {
     font-size: 3vw;
@@ -136,5 +149,15 @@ h2 {
     font-size: 2.5vw;
     line-height: 5vw;
     height: 5vw;
+  }
+
+  .social-button {
+    display: inline-block;
+    width: 20%;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 2vw;
+    height: 3vw;
+    line-height: 3vw;
   }
 }

@@ -105,25 +105,36 @@ h2 {
   margin-bottom: 20px;
 }
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 768px) {
+  h2 {
+    font-size: 3vw;
+  }
+
   #my-image {
-    width: 40vw;
-    height: 40vw;
-    border: 1vw solid #8d8d8d;
+    width: 20vw;
+    height: 20vw;
+    border: 0.5vw solid #8d8d8d;
   }
 
   #my-image img {
-    margin-top: -3vw;
+    margin-top: -1vw;
   }
 
   #my-image span {
-    font-size 7vw;
+    font-size: 4vw;
     bottom: 1vw;
-    line-height: 14vw;
-    height: 14vw;
+    line-height: 6vw;
+    height: 6vw;
   }
 
   #portfolio-image {
     width: 40%;
+    border-radius: 10px;
+  }
+
+  #portfolio-image span {
+    font-size: 2.5vw;
+    line-height: 5vw;
+    height: 5vw;
   }
 }

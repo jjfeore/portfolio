@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.content-area {
+  text-align: center;
+  width: 80%;
+  margin: 20px 10% 0px 10%;
+}
+
+#my-image {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  border: 1vw solid #666;
+  border-radius: 100%;
+  background-color: #FFF;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+#my-image img {
+  width: 100%;
+}
+
+#my-image span {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  font-size: 10vw;
+  font-weight: 900;
+  color: #DDD;
+  text-shadow: 2px 2px 4px #000000;
+  line-height: 20vw;
+  height: 20vw;
+}

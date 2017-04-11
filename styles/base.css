@@ -13,17 +13,30 @@ a {
   text-decoration: none;
 }
 
+p {
+  width: 80%;
+  margin: auto;
+}
+
+h2 {
+  color: #666;
+  font-weight: black;
+  font-size: 6vw;
+  margin-bottom: 5px;
+  padding: 0px;
+}
+
 .content-area {
   text-align: center;
-  width: 80%;
-  margin: 20px 10% 0px 10%;
+  width: 100%;
+  margin-top: 20px;
 }
 
 #my-image {
   position: relative;
   width: 60vw;
   height: 60vw;
-  margin: auto;
+  margin: 0px auto 20px auto;
   border: 2vw solid #8d8d8d;
   border-radius: 100%;
   background-color: #FFF;
@@ -54,4 +67,63 @@ a {
 #make-stuff {
   background-color: #DDD;
   color: #FFF;
+  padding: 20px 0px;
+}
+
+#portfolio-image {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#portfolio-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+#portfolio-image span {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  font-size: 5vw;
+  font-weight: 900;
+  color: #FFF;
+  line-height: 10vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 10vw;
+}
+
+#carousel-bullets {
+  margin-top: 10px;
+}
+
+#long-bio {
+  margin-bottom: 20px;
+}
+
+@media all and (min-width: 800px) {
+  #my-image {
+    width: 40vw;
+    height: 40vw;
+    border: 1vw solid #8d8d8d;
+  }
+
+  #my-image img {
+    margin-top: -3vw;
+  }
+
+  #my-image span {
+    font-size 7vw;
+    bottom: 1vw;
+    line-height: 14vw;
+    height: 14vw;
+  }
+
+  #portfolio-image {
+    width: 40%;
+  }
 }

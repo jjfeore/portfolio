@@ -77,3 +77,8 @@ $('#button-left').click(function() {
     cycleItems();
   }, 3000);
 });
+
+$('#quick-bio a').on('click', function(e) {
+  e.preventDefault();
+  $('body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
+});

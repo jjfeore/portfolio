@@ -24,16 +24,20 @@ new PortfolioItem('BanzaiBaby', 'As BanzaiBaby\'s channel and community manager,
 
 fullPortfolio.forEach(function(portfolio) {
   $('#make-stuff').prepend(portfolio.toHtml());
+  $('#carousel-bullets').append('<span>&#x25CF;</span>');
 });
 
 // Slider code based on code at: https://www.sitepoint.com/web-foundations/making-simple-image-slider-html-css-jquery/
-// Only modified it a little - James
+// Modified the code a bunch and added the bullet stuff and animations - James
 
 var currentIndex = 0;
 $('.portfolio-image').eq(0).show();
+$('#carousel-bullets').find('span').eq(0).css('color', '#000');
 
 function cycleItems() {
   var item = $('.portfolio-image').eq(currentIndex);
+  $('#carousel-bullets').children().css('color', '#666');
+  $('#carousel-bullets').find('span').eq(currentIndex).css('color', '#000');
   $('.portfolio-image').hide();
   item.css('display','block');
 }

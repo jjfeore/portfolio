@@ -53,10 +53,6 @@
   color: #666;
 }
 
-#active-bullet {
-  color: red;
-}
-
 @media all and (min-width: 768px) {
   .carousel-button {
     font-size: 3vw;

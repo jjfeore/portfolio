@@ -88,6 +88,17 @@ $('#quick-bio a').on('click', function(e) {
   $('body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
 });
 
-$('.portfolio-image span').on('mouseover', function() {
-  $(this).append($(this).attr('data-desc'));
+$('.portfolio-image span').on('mouseover mouseleave', function(e) {
+  if (e.type == "mouseover") {
+    $(this).append($(this).attr('data-desc'));
+    $(this).animate({
+      top: 500
+    }, 200);
+  }
+  else {
+    $(this).find('p').remove();
+    $(this).animate({
+      top: 0
+    }, 200);
+  }
 });

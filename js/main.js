@@ -15,6 +15,7 @@ PortfolioItem.prototype.toHtml = function() {
   $newPortfolio.find('a').attr('href', this.url);
   $newPortfolio.find('img').attr('src', this.pic);
   $newPortfolio.find('span').text(this.name);
+  $newPortfolio.find('span').attr('data-desc', `<p>${this.desc}</p>`);
   return $newPortfolio;
 };
 
@@ -85,4 +86,8 @@ $('#button-left').click(function() {
 $('#quick-bio a').on('click', function(e) {
   e.preventDefault();
   $('body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
+});
+
+$('.portfolio-image span').on('mouseover', function() {
+  $(this).append($(this).attr('data-desc'));
 });

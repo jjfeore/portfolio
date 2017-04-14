@@ -23,7 +23,11 @@
   color: #FFF;
   line-height: 10vw;
   background-color: rgba(0, 0, 0, 0.5);
-  height: 10vw;
+}
+
+.portfolio-image span p {
+  font-size: 2vw;
+  line-height: 4vw;
 }
 
 .carousel-button {

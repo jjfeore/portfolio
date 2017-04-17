@@ -60,6 +60,10 @@
 }
 
 @media all and (min-width: 768px) {
+  #quick-bio p {
+    width: 40%;
+  }
+
   #my-image {
     width: 20vw;
     height: 20vw;

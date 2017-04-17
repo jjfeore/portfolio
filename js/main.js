@@ -15,6 +15,7 @@ PortfolioItem.prototype.toHtml = function() {
   $newPortfolio.find('a').attr('href', this.url);
   $newPortfolio.find('img').attr('src', this.pic);
   $newPortfolio.find('span').text(this.name);
+  $newPortfolio.find('span').attr('data-desc', `<p>${this.desc}</p>`);
   return $newPortfolio;
 };
 
@@ -24,16 +25,20 @@ new PortfolioItem('BanzaiBaby', 'As BanzaiBaby\'s channel and community manager,
 
 fullPortfolio.forEach(function(portfolio) {
   $('#make-stuff').prepend(portfolio.toHtml());
+  $('#carousel-bullets').append('<span>&#x25CF;</span>');
 });
 
 // Slider code based on code at: https://www.sitepoint.com/web-foundations/making-simple-image-slider-html-css-jquery/
-// Only modified it a little - James
+// Modified the code a bunch and added the bullet stuff and animations - James
 
 var currentIndex = 0;
 $('.portfolio-image').eq(0).show();
+$('#carousel-bullets').find('span').eq(0).css('color', '#000');
 
 function cycleItems() {
   var item = $('.portfolio-image').eq(currentIndex);
+  $('#carousel-bullets').children().css('color', '#666');
+  $('#carousel-bullets').find('span').eq(currentIndex).css('color', '#000');
   $('.portfolio-image').hide();
   item.css('display','block');
 }
@@ -76,4 +81,24 @@ $('#button-left').click(function() {
     }
     cycleItems();
   }, 3000);
+});
+
+$('#quick-bio a').on('click', function(e) {
+  e.preventDefault();
+  $('body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
+});
+
+$('.portfolio-image span').on('mouseover mouseleave', function(e) {
+  if (e.type == "mouseover") {
+    $(this).append($(this).attr('data-desc'));
+    $(this).animate({
+      top: 500
+    }, 200);
+  }
+  else {
+    $(this).find('p').remove();
+    $(this).animate({
+      top: 0
+    }, 200);
+  }
 });

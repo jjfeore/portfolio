@@ -23,7 +23,11 @@
   color: #FFF;
   line-height: 10vw;
   background-color: rgba(0, 0, 0, 0.5);
-  height: 10vw;
+}
+
+.portfolio-image span p {
+  font-size: 2vw;
+  line-height: 4vw;
 }
 
 .carousel-button {
@@ -51,10 +55,6 @@
 #carousel-bullets {
   margin-top: 10px;
   color: #666;
-}
-
-#active-bullet {
-  color: red;
 }
 
 @media all and (min-width: 768px) {

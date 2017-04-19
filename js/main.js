@@ -1,10 +1,10 @@
 'use strict';
 
-function PortfolioItem(name, description, url, pic) {
-  this.name = name;
-  this.desc = description;
-  this.url = url;
-  this.pic = pic;
+function PortfolioItem(newPort) {
+  this.name = newPort.name;
+  this.desc = newPort.desc;
+  this.url = newPort.url;
+  this.pic = newPort.pic;
 }
 PortfolioItem.all = [];
 
@@ -22,7 +22,7 @@ function initPage() {
 
 PortfolioItem.loadAll = function(rawData) {
   rawData.forEach(function(ele) {
-    PortfolioItem.all.push(new Article(ele));
+    PortfolioItem.all.push(new PortfolioItem(ele));
   });
 };
 

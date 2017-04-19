@@ -11,12 +11,8 @@ function PortfolioItem(name, description, url, pic) {
 }
 
 PortfolioItem.prototype.toHtml = function() {
-  var $newPortfolio = $('#make-stuff div:first-child').clone();
-  $newPortfolio.find('a').attr('href', this.url);
-  $newPortfolio.find('img').attr('src', this.pic);
-  $newPortfolio.find('span').text(this.name);
-  $newPortfolio.find('span').attr('data-desc', `<p>${this.desc}</p>`);
-  return $newPortfolio;
+  var render = Handlebars.compile($('#carousel-template').html());
+  return render(this);
 };
 
 new PortfolioItem('Four in a Row', 'My final project for Code Fellows 201 was just a simple and clean replica of the Four in a Row game we\'re all familiar with.', 'https://jjfeore.github.io/fourinarow/', 'images/fourinarow.jpg');
@@ -49,7 +45,7 @@ var autoSlide = setInterval(function() {
     currentIndex = 0;
   }
   cycleItems();
-}, 3000);
+}, 5000);
 
 $('#button-right').click(function() {
   clearInterval(autoSlide);
@@ -64,7 +60,7 @@ $('#button-right').click(function() {
       currentIndex = 0;
     }
     cycleItems();
-  }, 3000);
+  }, 5000);
 });
 
 $('#button-left').click(function() {
@@ -80,7 +76,7 @@ $('#button-left').click(function() {
       currentIndex = 0;
     }
     cycleItems();
-  }, 3000);
+  }, 5000);
 });
 
 $('#quick-bio a').on('click', function(e) {
@@ -89,16 +85,16 @@ $('#quick-bio a').on('click', function(e) {
 });
 
 $('.portfolio-image span').on('mouseover mouseleave', function(e) {
-  if (e.type == "mouseover") {
-    $(this).append($(this).attr('data-desc'));
-    $(this).animate({
-      top: 500
-    }, 200);
+  if (e.type == 'mouseover') {
+    $(this).find('p').show();
+    // .animate({
+    //   top: 500
+    // }, 200);
   }
   else {
-    $(this).find('p').remove();
-    $(this).animate({
-      top: 0
-    }, 200);
+    $(this).find('p').hide();
+    // $(this).animate({
+    //   top: 0
+    // }, 200);
   }
 });

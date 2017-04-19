@@ -1,28 +1,43 @@
 'use strict';
 
-var fullPortfolio = [];
-
 function PortfolioItem(name, description, url, pic) {
   this.name = name;
   this.desc = description;
   this.url = url;
   this.pic = pic;
-  fullPortfolio.push(this);
 }
+PortfolioItem.all = [];
 
 PortfolioItem.prototype.toHtml = function() {
   var render = Handlebars.compile($('#carousel-template').html());
   return render(this);
 };
 
-new PortfolioItem('Four in a Row', 'My final project for Code Fellows 201 was just a simple and clean replica of the Four in a Row game we\'re all familiar with.', 'https://jjfeore.github.io/fourinarow/', 'images/fourinarow.jpg');
-new PortfolioItem('SOBA', 'I\'ve helped build one of the largest and most active online broadcasting non-profits in the nation. The Seattle Online Broadcasters Association dedicates itself to assisting all broadcasters in the Puget Sound area.', 'https://www.meetup.com/SOBA-Meetup/', 'images/soba.jpeg');
-new PortfolioItem('BanzaiBaby', 'As BanzaiBaby\'s channel and community manager, I\'ve helped build her channel to being among the most well-recognized on all of Twitch Creative.', 'https://www.twitch.tv/banzaibaby', 'images/banzaibaby.png');
+function initPage() {
+  PortfolioItem.all.forEach(function(portfolio) {
+    $('#make-stuff').prepend(portfolio.toHtml());
+    $('#carousel-bullets').append('<span>&#x25CF;</span>');
+  });
+}
 
-fullPortfolio.forEach(function(portfolio) {
-  $('#make-stuff').prepend(portfolio.toHtml());
-  $('#carousel-bullets').append('<span>&#x25CF;</span>');
-});
+PortfolioItem.loadAll = function(rawData) {
+  rawData.forEach(function(ele) {
+    PortfolioItem.all.push(new Article(ele));
+  });
+};
+
+PortfolioItem.fetchAll = function() {
+  if (localStorage.rawData) {
+    PortfolioItem.loadAll(JSON.parse(localStorage.getItem('rawData')));
+    initPage();
+  } else {
+    $.getJSON('data/projects.json').done(function (rawData) {
+      PortfolioItem.loadAll(rawData);
+      localStorage.setItem('rawData', JSON.stringify(rawData));
+      initPage();
+    });
+  }
+};
 
 // Slider code based on code at: https://www.sitepoint.com/web-foundations/making-simple-image-slider-html-css-jquery/
 // Modified the code a bunch and added the bullet stuff and animations - James
@@ -41,7 +56,7 @@ function cycleItems() {
 
 var autoSlide = setInterval(function() {
   currentIndex += 1;
-  if (currentIndex > fullPortfolio.length - 1) {
+  if (currentIndex > PortfolioItem.all.length - 1) {
     currentIndex = 0;
   }
   cycleItems();
@@ -50,13 +65,13 @@ var autoSlide = setInterval(function() {
 $('#button-right').click(function() {
   clearInterval(autoSlide);
   currentIndex += 1;
-  if (currentIndex > fullPortfolio.length - 1) {
+  if (currentIndex > PortfolioItem.all.length - 1) {
     currentIndex = 0;
   }
   cycleItems();
   autoSlide = setInterval(function() {
     currentIndex += 1;
-    if (currentIndex > fullPortfolio.length - 1) {
+    if (currentIndex > PortfolioItem.all.length - 1) {
       currentIndex = 0;
     }
     cycleItems();
@@ -67,12 +82,12 @@ $('#button-left').click(function() {
   clearInterval(autoSlide);
   currentIndex -= 1;
   if (currentIndex < 0) {
-    currentIndex = fullPortfolio.length - 1;
+    currentIndex = PortfolioItem.all.length - 1;
   }
   cycleItems();
   autoSlide = setInterval(function() {
     currentIndex += 1;
-    if (currentIndex > fullPortfolio.length - 1) {
+    if (currentIndex > PortfolioItem.all.length - 1) {
       currentIndex = 0;
     }
     cycleItems();

@@ -18,6 +18,8 @@ function initPage() {
     $('#make-stuff').prepend(portfolio.toHtml());
     $('#carousel-bullets').append('<span>&#x25CF;</span>');
   });
+  $('.portfolio-image').eq(0).show();
+  $('#carousel-bullets').find('span').eq(0).css('color', '#000');
 }
 
 PortfolioItem.loadAll = function(rawData) {
@@ -43,8 +45,6 @@ PortfolioItem.fetchAll = function() {
 // Modified the code a bunch and added the bullet stuff and animations - James
 
 var currentIndex = 0;
-$('.portfolio-image').eq(0).show();
-$('#carousel-bullets').find('span').eq(0).css('color', '#000');
 
 function cycleItems() {
   var item = $('.portfolio-image').eq(currentIndex);

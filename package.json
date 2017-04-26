@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jjfeore/portfolio/issues"
   },
-  "homepage": "https://github.com/jjfeore/portfolio#readme"
+  "homepage": "https://github.com/jjfeore/portfolio#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }

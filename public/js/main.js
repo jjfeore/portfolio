@@ -29,16 +29,11 @@ PortfolioItem.loadAll = function(rawData) {
 };
 
 PortfolioItem.fetchAll = function() {
-  if (localStorage.rawData) {
-    PortfolioItem.loadAll(JSON.parse(localStorage.getItem('rawData')));
+  $.getJSON('data/projects.json').done(function (rawData) {
+    PortfolioItem.loadAll(rawData);
+    localStorage.setItem('rawData', JSON.stringify(rawData));
     initPage();
-  } else {
-    $.getJSON('data/projects.json').done(function (rawData) {
-      PortfolioItem.loadAll(rawData);
-      localStorage.setItem('rawData', JSON.stringify(rawData));
-      initPage();
-    });
-  }
+  });
 };
 
 // Slider code based on code at: https://www.sitepoint.com/web-foundations/making-simple-image-slider-html-css-jquery/

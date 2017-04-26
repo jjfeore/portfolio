@@ -1,8 +1,8 @@
 'use strict';
 
 const express = require('express');
-const app = express();
 const PORT = process.env.PORT || 3000;
+const app = express();
 
 app.get('/', function(request, response) {
   response.sendFile('index.html', {root: './public'});

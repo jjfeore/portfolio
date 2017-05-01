@@ -23,6 +23,11 @@
     $('#carousel-bullets').find('span').eq(0).css('color', '#000');
   }
 
+  function initAbout() {
+    let uselessArr = [1, 2, 3, 38, 19, 43, 72, 4, 18, 23];
+    $('#insert-transform').text(uselessArr.map(val => val + 1).reduce((a,b) => a + b));
+  }
+
   PortfolioItem.loadAll = function(rawData) {
     rawData.forEach(function(ele) {
       PortfolioItem.all.push(new PortfolioItem(ele));
@@ -34,6 +39,7 @@
       PortfolioItem.loadAll(rawData);
       localStorage.setItem('rawData', JSON.stringify(rawData));
       initPage();
+      initAbout();
     });
   };
 
